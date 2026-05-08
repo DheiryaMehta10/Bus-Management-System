@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BusCore — Management System</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <div class="logo-mark">Bus<span>Core</span></div>
+            <div class="logo-sub">Management System</div>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-label">Database Tables</div>
+            <ul id="table-list" style="list-style: none;">
+                <!-- Tables injected dynamically -->
+            </ul>
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="user-pill">
+                <div class="avatar">A</div>
+                <div class="user-info">
+                    <div class="name">Admin One</div>
+                    <div class="role">Administrator</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main">
+        <div class="topbar">
+            <div class="page-title" id="current-table-title">Select a Table</div>
+            <div class="topbar-actions">
+                <button id="add-btn" class="btn btn-primary btn-sm" style="display: none;">+ Add New</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <div id="loading-state" class="state-message">Loading data...</div>
+            <div id="empty-state" class="state-message" style="display: none;">No records found. Choose a table from the
+                sidebar.</div>
+
+            <div class="table-wrap" id="table-container" style="display: none;">
+                <table id="data-table">
+                    <thead id="data-thead">
+                        <!-- Columns injected here -->
+                    </thead>
+                    <tbody id="data-tbody">
+                        <!-- Rows injected here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="form-modal" class="overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-title">Add Record</h3>
+                <button id="close-modal-btn" class="modal-close">&times;</button>
+            </div>
+            <form id="dynamic-form" class="form-grid">
+                <!-- Inputs injected dynamically -->
+            </form>
+            <div class="modal-footer">
+                <button id="cancel-btn" class="btn btn-ghost">Cancel</button>
+                <button type="submit" form="dynamic-form" class="btn btn-primary">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirm-modal" class="overlay">
+        <div class="modal" style="width: 400px;">
+            <div class="modal-header">
+                <h3 class="modal-title">Confirm Delete</h3>
+            </div>
+            <div class="modal-body" style="padding: 10px 0;">
+                <p style="font-size: 14px; color: var(--muted);">Are you sure you want to delete this record? This
+                    action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button id="confirm-cancel-btn" class="btn btn-ghost">No, Keep it</button>
+                <button id="confirm-delete-btn" class="btn btn-danger">Yes, Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast">
+        <span id="toast-message">Action successful</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
